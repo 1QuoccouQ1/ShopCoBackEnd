@@ -1,0 +1,60 @@
+# =========================
+# Node & Environment
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*
+!.env.example
+
+# =========================
+# Build & Temp
+# =========================
+build/
+.cache/
+.tmp/
+dist/
+coverage/
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# =========================
+# Strapi specific
+# =========================
+# Generated admin panel build
+/.strapi/
+# or (older naming convention)
+# .strapi-updater.json
+/.strapi-updater.json
+
+
+
+# Exported database or dump files
+*.sqlite
+*.db
+dump.rdb
+*.sql
+
+# =========================
+# OS / Misc
+# =========================
+Thumbs.db
+ehthumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# =========================
+# Dependency managers lock files
+# (keep only the one you actually use)
+# =========================
+# Uncomment as needed
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
