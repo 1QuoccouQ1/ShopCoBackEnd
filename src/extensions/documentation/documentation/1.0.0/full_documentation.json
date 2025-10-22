@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-10-16T18:36:48.462Z"
+    "x-generation-date": "2025-10-22T22:09:33.503Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -7586,9 +7586,8 @@
                                   "type": "string",
                                   "enum": [
                                     "COD",
-                                    "bank",
-                                    "momo",
-                                    "vnpay"
+                                    "CASH",
+                                    "QRCODE"
                                   ]
                                 },
                                 "total_price": {
@@ -7599,8 +7598,7 @@
                                   "type": "string",
                                   "enum": [
                                     "pending",
-                                    "confirmed",
-                                    "shipping ",
+                                    "shipping",
                                     "completed",
                                     "cancelled"
                                   ]
@@ -9669,9 +9667,8 @@
                 "type": "string",
                 "enum": [
                   "COD",
-                  "bank",
-                  "momo",
-                  "vnpay"
+                  "CASH",
+                  "QRCODE"
                 ]
               },
               "total_price": {
@@ -9682,8 +9679,7 @@
                 "type": "string",
                 "enum": [
                   "pending",
-                  "confirmed",
-                  "shipping ",
+                  "shipping",
                   "completed",
                   "cancelled"
                 ]
@@ -9807,9 +9803,8 @@
             "type": "string",
             "enum": [
               "COD",
-              "bank",
-              "momo",
-              "vnpay"
+              "CASH",
+              "QRCODE"
             ]
           },
           "total_price": {
@@ -9820,8 +9815,7 @@
             "type": "string",
             "enum": [
               "pending",
-              "confirmed",
-              "shipping ",
+              "shipping",
               "completed",
               "cancelled"
             ]
@@ -10755,9 +10749,8 @@
                                       "type": "string",
                                       "enum": [
                                         "COD",
-                                        "bank",
-                                        "momo",
-                                        "vnpay"
+                                        "CASH",
+                                        "QRCODE"
                                       ]
                                     },
                                     "total_price": {
@@ -10768,8 +10761,7 @@
                                       "type": "string",
                                       "enum": [
                                         "pending",
-                                        "confirmed",
-                                        "shipping ",
+                                        "shipping",
                                         "completed",
                                         "cancelled"
                                       ]
@@ -12448,9 +12440,8 @@
                                 "type": "string",
                                 "enum": [
                                   "COD",
-                                  "bank",
-                                  "momo",
-                                  "vnpay"
+                                  "CASH",
+                                  "QRCODE"
                                 ]
                               },
                               "total_price": {
@@ -12461,8 +12452,7 @@
                                 "type": "string",
                                 "enum": [
                                   "pending",
-                                  "confirmed",
-                                  "shipping ",
+                                  "shipping",
                                   "completed",
                                   "cancelled"
                                 ]
@@ -14515,9 +14505,8 @@
                             "type": "string",
                             "enum": [
                               "COD",
-                              "bank",
-                              "momo",
-                              "vnpay"
+                              "CASH",
+                              "QRCODE"
                             ]
                           },
                           "total_price": {
@@ -14528,8 +14517,7 @@
                             "type": "string",
                             "enum": [
                               "pending",
-                              "confirmed",
-                              "shipping ",
+                              "shipping",
                               "completed",
                               "cancelled"
                             ]
@@ -16070,9 +16058,8 @@
                                 "type": "string",
                                 "enum": [
                                   "COD",
-                                  "bank",
-                                  "momo",
-                                  "vnpay"
+                                  "CASH",
+                                  "QRCODE"
                                 ]
                               },
                               "total_price": {
@@ -16083,8 +16070,7 @@
                                 "type": "string",
                                 "enum": [
                                   "pending",
-                                  "confirmed",
-                                  "shipping ",
+                                  "shipping",
                                   "completed",
                                   "cancelled"
                                 ]

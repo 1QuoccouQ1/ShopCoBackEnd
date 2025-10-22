@@ -8,5 +8,21 @@ export default {
         auth: false,
       },
     },
+    {
+      method: 'POST',
+      path: '/payment/sepay-callback',
+      handler: 'order.sepayCallback',
+      config: {
+        auth: false,
+      },
+    },
+    {
+      method: 'GET',
+      path: '/payment/check-status/:id',
+      handler: 'order.testSepayCallback',
+      config: {
+        auth: false,
+      },
+    },
   ],
 };

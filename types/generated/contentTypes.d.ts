@@ -560,13 +560,11 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::order-item.order-item'
     >;
-    payment_method: Schema.Attribute.Enumeration<
-      ['COD', 'bank', 'momo', 'vnpay']
-    >;
+    payment_method: Schema.Attribute.Enumeration<['COD', 'CASH', 'QRCODE']>;
     phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     statusOrder: Schema.Attribute.Enumeration<
-      ['pending', 'confirmed', 'shipping ', 'completed', 'cancelled']
+      ['pending', 'shipping', 'completed', 'cancelled']
     >;
     total_price: Schema.Attribute.Decimal;
     Type: Schema.Attribute.Enumeration<['Visitors', 'User']>;

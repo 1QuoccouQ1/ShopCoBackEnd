@@ -33,9 +33,8 @@
       "type": "enumeration",
       "enum": [
         "COD",
-        "bank",
-        "momo",
-        "vnpay"
+        "CASH",
+        "QRCODE"
       ]
     },
     "total_price": {
@@ -45,8 +44,7 @@
       "type": "enumeration",
       "enum": [
         "pending",
-        "confirmed",
-        "shipping ",
+        "shipping",
         "completed",
         "cancelled"
       ]
