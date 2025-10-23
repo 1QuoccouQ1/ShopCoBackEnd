@@ -96,43 +96,59 @@ export default factories.createCoreController("api::order.order", ({ strapi }) =
       return ctx.internalServerError("Failed to create order");
     }
   },
-  async sepayCallback(ctx) {
-  try {
-    const payload = ctx.request.body;
-    const amount = payload.transferAmount;
+ async sepayCallback(ctx) {
+    try {
+      const payload = ctx.request.body;
 
-    if (!payload.code) {
-      console.error("⚠️ Không tìm thấy mã đơn hàng trong payload");
-      return ctx.badRequest("Missing order code");
-    }
+      const orderCode = payload.code; 
+      const paidAmount = Number(payload.transferAmount); 
 
-   
-    if (payload.code) {
-      const updated = await strapi.db.query("api::order.order").update({
-        where: { MDH: payload.code },
-        data: {
-          statusOrder: "shipping", 
-        },
+      if (!orderCode || !paidAmount) {
+        return ctx.badRequest("Thiếu thông tin mã đơn hàng hoặc số tiền.");
+      }
+
+      const order = await strapi.db.query("api::order.order").findOne({
+        where: { MDH: orderCode },
       });
 
-      if (updated) {
+      if (!order) {
+        console.warn(`⚠️ Không tìm thấy đơn hàng với MDH: ${orderCode}`);
+        return ctx.notFound("Order not found");
+      }
+      
+      const orderTotal = Number(order.total_price);
+
+      console.log("Found order for callback:", paidAmount);
+      console.log("Found order for callback:", orderTotal);
+
+      if (paidAmount !== orderTotal) {
+        console.warn(
+          `⚠️ Thanh toán không hợp lệ cho đơn ${orderCode}: chưa đúng số tiền cần thanh toán`
+        );
+        return ctx.badRequest("Sai số tiền thanh toán");
+      }
+
+      if (order.statusOrder !== "shipping") {
+        await strapi.db.query("api::order.order").update({
+          where: { MDH: orderCode },
+          data: {
+            statusOrder: "shipping", 
+          },
+        });
+
         console.log(
-          `✅ [Order ${payload.code}] Đã cập nhật thành công: PAID (${amount}₫)`
+          `✅ Đơn hàng ${orderCode} đã thanh toán thành công (${paidAmount}₫)`
         );
       } else {
-        console.warn(`⚠️ Không tìm thấy đơn hàng: ${payload.code}`);
+        console.log(`ℹ️ Đơn hàng ${orderCode} đã ở trạng thái "shipping", bỏ qua.`);
       }
-    } else {
-      console.log(
-        `ℹ️ [Order ${payload.code}] Callback không phải thanh toán thành công (${amount}₫)`
-      );
+
+      return ctx.send({ ok: true, orderCode, paidAmount });
+    } catch (err) {
+      console.error("❌ Lỗi xử lý callback SePay:", err);
+      return ctx.internalServerError("Webhook processing error");
     }
-    ctx.send({ ok: true });
-  } catch (err) {
-    console.error("❌ Lỗi xử lý callback SePay:", err);
-    ctx.throw(500, "Webhook error");
-  }
-},
+  },
  async testSepayCallback(ctx) {
     try {
       const { id } = ctx.params; 
